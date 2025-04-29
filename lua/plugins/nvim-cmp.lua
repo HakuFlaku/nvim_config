@@ -1,5 +1,3 @@
--- ~/nvim/lua/slydragonn/plugins/cmp.lua
-
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
@@ -9,9 +7,13 @@ return {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 
-		-- for snipping
-		'hrsh7th/cmp-vsnip',
-		'hrsh7th/vim-vsnip',
+		-- For snipping
+		"hrsh7th/cmp-vsnip",
+		"hrsh7th/vim-vsnip",
+
+		-- For css intellisense
+		"luckasRanarison/tailwind-tools.nvim",
+		"Jezda1337/nvim-html-css",
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -38,9 +40,11 @@ return {
 			},
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				{ name = "vsnip" },
 				{ name = "buffer" },
 				{ name = "path" },
-				{ name = 'cmp-nvim-lsp-signature-help' },
+				{ name = "nvim_lsp_signature_help" },
+				{ name = "html-css" },
 			}),
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
