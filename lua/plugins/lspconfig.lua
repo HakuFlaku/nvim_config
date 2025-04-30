@@ -30,8 +30,15 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
+	dependencies = {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+	},
 	lazy = false,
 	config = function(_, opts)
+		require("mason").setup()
+		require("mason-lspconfig").setup()
+
 		vim.diagnostic.config(diagnostic_opts())
 
 		local lspconfig = require'lspconfig'
@@ -75,19 +82,73 @@ return {
 		})
 
 		lspconfig.elixirls.setup{
-			cmd = { vim.fn.expand("~/.elixirls/language_server.sh") },
+			-- cmd = { vim.fn.expand("~/.elixirls/language_server.sh") },
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
 
-		lspconfig.vuels.setup{
-			on_attach = on_attach,
-			capabilities = capabilities,
-		}
+		-- lspconfig.vuels.setup{
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- }
+		--
+		-- lspconfig.ts_ls.setup{
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- }
 
-		lspconfig.ts_ls.setup{
-			on_attach = on_attach,
-			capabilities = capabilities,
-		}
+		-- lspconfig.volar.setup {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+		-- 	init_options = {
+		-- 		vue = {
+		-- 			hybridMode = false,
+		-- 		},
+		-- 	},
+		-- }
+		-- lspconfig.volar.setup {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		vue = {
+		-- 			complete = {
+		-- 				casing = {
+		-- 					props = "kebab",
+		-- 					tags = "kebab",
+		-- 				}
+		-- 			}
+		-- 		}
+		-- 	},
+		-- 	init_options = {
+		-- 		typescript = {
+		-- 			tsdk = vim.fn.expand(
+		-- 				"~/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib"
+		-- 			),
+		-- 		},
+		-- 	}
+		-- }
+		--
+		-- lspconfig.vtsls.setup {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "typescript", "javascript", "vue" },
+		-- 	settings = {
+		-- 		vtsls = {
+		-- 			tsserver = {
+		-- 				globalPlugins = {
+		-- 					{
+		-- 						name = "@vue/typescript-plugin",
+		-- 						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+		-- 							.. "/node_modules/@vue/language-server",
+		-- 						languages = { "vue" },
+		-- 						configNamespace = "typescript",
+		-- 						enableForWorkspaceTypeScriptVersions = true,
+		-- 					},
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 	},
+		-- }
 	end,
 }

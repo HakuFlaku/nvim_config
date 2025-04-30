@@ -1,3 +1,5 @@
+local icons = require("config.icons")
+
 -- Disable providers that I don't need
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
@@ -8,7 +10,7 @@ vim.g.loaded_ruby_provider = 0
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.opt.listchars = { tab = '⇥ ', space = '·', trail = '~'}
+vim.opt.listchars = { tab = icons.misc.tab, space = icons.misc.space, trail = icons.misc.trail}
 vim.opt.list = true
 
 -- Default turn on hybrid number in the left gutter

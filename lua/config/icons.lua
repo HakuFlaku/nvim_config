@@ -1,6 +1,9 @@
 return {
 	misc = {
-		blank_square	= "󰝤 "
+		blank_square	= "󰝤 ",
+		tab				= "│ ",
+		space			= "·",
+		trail			= "~",
 	},
 	diagnostics = {
 		error			= " ",

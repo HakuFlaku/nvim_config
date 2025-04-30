@@ -73,6 +73,11 @@ return {
 
 					item.kind = icons.cmp_kind[item.kind]
 
+					-- Need this otherwise the options don't appear??
+					-- if entry.source.name == "html-css" then
+					-- 	item.menu = "[" .. (entry.completion_item.provider or "html-css") .. "]"
+					-- end
+
 					return item
 				end,
 			},
