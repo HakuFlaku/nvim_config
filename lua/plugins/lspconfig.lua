@@ -87,29 +87,86 @@ return {
 			capabilities = capabilities,
 		}
 
-		-- lspconfig.vuels.setup{
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
+		-- ** Enables vuels which uses vetur.
+		--	Features enabled:
+		--		picks up bootstrap components
+		--		lifecycle methods (no docs)
+		--		props
+		--		Requires vetur config:
+		--			shows custom components
+		--			goto component type definition
+		--	Features missing:
+		--		show slot sections
+		
+		-- lspconfig.vuels.setup{}
+		
+		-- Some notes on vuels with vetur. It does a lot of things pretty nicely, but is missing some key aspects (like slots) and is two years dead in the water at this point. That said, this was built with vue 2 in mind, and thus does work with vue 2 better than Volar does out of the box. However, if possible, Volar should be what we look to use as it's actually maintained and is supported by the Vue team directly.
+
+		-- ** Enables ts and volar.
+		--	Enabled features:
+		--		goto definition of custom components
+		--		picks up custom components so long as they define a name and you import it once yourself.
+		--		Seems to pickup global components, format isn't in kebab case though
+		--	Missing features:
+		--		pickup bootstrap components (there are possibly ways to fix this)
+		--		available props.
+		-- lspconfig.ts_ls.setup {
+		-- 	init_options = {
+		-- 		plugins = {
+		-- 			{
+		-- 				name = '@vue/typescript-plugin',
+		-- 				location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+		-- 					.. "/node_modules/@vue/language-server",
+		-- 				languages = { 'vue' },
+		-- 			},
+		-- 		},
+		-- 	},
+		-- 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+		-- 	settings = {
+		-- 		typescript = {
+		-- 			inlayHints = {
+		-- 				includeInlayParameterNameHints = 'all',
+		-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+		-- 				includeInlayFunctionParameterTypeHints = true,
+		-- 				includeInlayVariableTypeHints = true,
+		-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+		-- 				includeInlayPropertyDeclarationTypeHints = true,
+		-- 				includeInlayFunctionLikeReturnTypeHints = true,
+		-- 				includeInlayEnumMemberValueHints = true,
+		-- 			},
+		-- 		},
+		-- 	},
 		-- }
 		--
-		-- lspconfig.ts_ls.setup{
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- }
-
 		-- lspconfig.volar.setup {
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
 		-- 	init_options = {
 		-- 		vue = {
 		-- 			hybridMode = false,
 		-- 		},
+		-- 		typescript = {
+		-- 			tsdk = require("mason-registry").get_package("vue-language-server"):get_install_path()
+		--
+		-- 		}
 		-- 	},
+		-- 	settings = {
+		-- 		vue = {
+		-- 			complete = {
+		-- 				casing = {
+		-- 					tags = "kebabCase",
+		-- 				}
+		-- 			}
+		-- 		}
+		-- 	}
 		-- }
-		-- lspconfig.volar.setup {
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
+		
+		-- lspconfig.volar.setup{
+		-- 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+		-- 	init_options = {
+		-- 		vue = {
+		-- 			-- disable hybrid mode
+		-- 			hybridMode = false,
+		-- 		},
+		-- 	},
 		-- 	settings = {
 		-- 		vue = {
 		-- 			complete = {
@@ -119,36 +176,25 @@ return {
 		-- 				}
 		-- 			}
 		-- 		}
-		-- 	},
-		-- 	init_options = {
-		-- 		typescript = {
-		-- 			tsdk = vim.fn.expand(
-		-- 				"~/.local/share/nvim/mason/packages/vue-language-server/node_modules/typescript/lib"
-		-- 			),
-		-- 		},
 		-- 	}
 		-- }
-		--
-		-- lspconfig.vtsls.setup {
-		-- 	on_attach = on_attach,
-		-- 	capabilities = capabilities,
-		-- 	filetypes = { "typescript", "javascript", "vue" },
-		-- 	settings = {
-		-- 		vtsls = {
-		-- 			tsserver = {
-		-- 				globalPlugins = {
-		-- 					{
-		-- 						name = "@vue/typescript-plugin",
-		-- 						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-		-- 							.. "/node_modules/@vue/language-server",
-		-- 						languages = { "vue" },
-		-- 						configNamespace = "typescript",
-		-- 						enableForWorkspaceTypeScriptVersions = true,
-		-- 					},
-		-- 				},
-		-- 			},
-		-- 		},
-		-- 	},
-		-- }
+		
+
+		lspconfig.ts_ls.setup {
+			init_options = {
+				plugins = {
+					{
+						name = '@vue/typescript-plugin',
+						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+							.. "/node_modules/@vue/language-server",
+						languages = { 'vue' },
+					},
+				},
+			},
+			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+		}
+
+		-- No need to set `hybridMode` to `true` as it's the default value
+		lspconfig.volar.setup {}
 	end,
 }
