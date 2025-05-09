@@ -37,7 +37,6 @@ return {
 	},
 	lazy = false,
 	config = function(_, opts)
-		-- require("java").setup()
 		require("mason").setup()
 		require("mason-lspconfig").setup{
 			automatic_enable = false
@@ -91,7 +90,10 @@ return {
 			capabilities = capabilities,
 		}
 
-		vim.lsp.config("jdtls", {})
+		vim.lsp.config("jdtls", {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 		vim.lsp.enable("jdtls")
 
 		-- ** Enables vuels which uses vetur.
