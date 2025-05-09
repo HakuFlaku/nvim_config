@@ -18,6 +18,7 @@ return {
 				"eex",
 				"css",
 				"vue",
+				"java",
 			},
 			sync_install = false,
 			highlight = { enable = true },

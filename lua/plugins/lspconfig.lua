@@ -31,13 +31,17 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
+		"nvim-java/nvim-java",
 	},
 	lazy = false,
 	config = function(_, opts)
+		-- require("java").setup()
 		require("mason").setup()
-		require("mason-lspconfig").setup()
+		require("mason-lspconfig").setup{
+			automatic_enable = false
+		}
 
 		vim.diagnostic.config(diagnostic_opts())
 
@@ -86,6 +90,9 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		}
+
+		vim.lsp.config("jdtls", {})
+		vim.lsp.enable("jdtls")
 
 		-- ** Enables vuels which uses vetur.
 		--	Features enabled:
@@ -180,21 +187,24 @@ return {
 		-- }
 		
 
-		lspconfig.ts_ls.setup {
+		vim.lsp.config('ts_ls', {
 			init_options = {
 				plugins = {
 					{
 						name = '@vue/typescript-plugin',
-						location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-							.. "/node_modules/@vue/language-server",
+						location = vim.fn.expand("$MASON/share/vue-language-server/node_modules/@vue/language-server"),
+						-- location = require("mason-registry").get_package("vue-language-server"):get_install_path()
+						-- 	.. "/node_modules/@vue/language-server",
 						languages = { 'vue' },
 					},
 				},
 			},
 			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-		}
+		})
+		vim.lsp.enable('ts_ls')
 
 		-- No need to set `hybridMode` to `true` as it's the default value
-		lspconfig.volar.setup {}
+		vim.lsp.config('volar', {})
+		vim.lsp.enable('volar')
 	end,
 }
