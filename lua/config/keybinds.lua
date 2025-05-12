@@ -13,3 +13,11 @@ vim.keymap.set("n", "<leader>di", vim.diagnostic.open_float, { desc = "Toggles s
 local nvim_tree = require("nvim-tree.api")
 
 vim.keymap.set("n", "<leader>tt", nvim_tree.tree.toggle, { desc = "Nvim Tree: toggle tree", noremap = true, silent = true, nowait = true })
+vim.keymap.set("n", "<leader>tf", nvim_tree.tree.open, { desc = "Nvim Tree: focus tree", noremap = true, silent = true, nowait = true})
+
+
+-- Dap
+local dap = require"dap"
+
+vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Nvim DAP: start debug session or continue execution of current session" })
+vim.keymap.set("n", "<leader>db", dap.continue, { desc = "Nvim DAP: toggle breakpoint on cursor" })

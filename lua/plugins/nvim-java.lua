@@ -1,26 +1,22 @@
 return {
 	'nvim-java/nvim-java',
-	config = function()
-		require("java").setup()
-	end
-	-- config = false,
-	-- dependencies = {
-	-- 	{
-	-- 		'neovim/nvim-lspconfig',
-	-- 		opts = {
-	-- 			servers = {
-	-- 				jdtls = {
-	-- 					-- Your custom jdtls settings goes here
-	-- 				},
-	-- 			},
-	-- 			setup = {
-	-- 				jdtls = function()
-	-- 					require('java').setup({
-	-- 							-- Your custom nvim-java configuration goes here
-	-- 							})
-	-- 				end,
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
+	dependencies = {
+		"mfussenegger/nvim-dap",
+		"nvim-java/nvim-java-core",
+		"nvim-java/nvim-java-test",
+		"nvim-java/nvim-java-dap",
+		"nvim-java/lua-async-await",
+		{
+			"mason-org/mason.nvim",
+			opts = {
+				registries = {
+					"github:nvim-java/mason-registry",
+					"github:mason-org/mason-registry",
+				}
+			}
+		},
+		config = function()
+			require("java").setup()
+		end,
+	},
 }
