@@ -38,11 +38,14 @@ return {
 	lazy = false,
 	config = function(_, opts)
 		require("mason").setup()
-		require("mason-lspconfig").setup {}
+		require("mason-lspconfig").setup {
+			automatic_enable = true,
+			ensure_installed = {"rust_analyzer", "lua_ls", "elixir_ls"}
+		}
 
 		vim.diagnostic.config(diagnostic_opts())
 
-		local on_attach = function(client, bufnr)
+		local on_attach = function(_, bufnr)
 			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
