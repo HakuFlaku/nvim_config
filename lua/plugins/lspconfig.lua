@@ -32,15 +32,15 @@ return {
 	"neovim/nvim-lspconfig",
 	version = "2.1.0",
 	dependencies = {
-		"williamboman/mason.nvim",
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason.nvim",
+		"mason-org/mason-lspconfig.nvim",
 	},
 	lazy = false,
 	config = function(_, opts)
 		require("mason").setup()
 		require("mason-lspconfig").setup {
 			automatic_enable = true,
-			ensure_installed = {"rust_analyzer", "lua_ls", "elixir_ls"}
+			ensure_installed = {"rust_analyzer", "lua_ls", "elixirls"}
 		}
 
 		vim.diagnostic.config(diagnostic_opts())
