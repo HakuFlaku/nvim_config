@@ -10,10 +10,6 @@ return {
 		-- For snipping
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
-
-		-- For css intellisense
-		"luckasRanarison/tailwind-tools.nvim",
-		"Jezda1337/nvim-html-css",
 	},
 	config = function()
 		local cmp = require("cmp")

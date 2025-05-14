@@ -15,9 +15,8 @@ local nvim_tree = require("nvim-tree.api")
 vim.keymap.set("n", "<leader>tt", nvim_tree.tree.toggle, { desc = "Nvim Tree: toggle tree", noremap = true, silent = true, nowait = true })
 vim.keymap.set("n", "<leader>tf", nvim_tree.tree.open, { desc = "Nvim Tree: focus tree", noremap = true, silent = true, nowait = true})
 
+-- DAP
+local dap = require("dap")
 
--- Dap
-local dap = require"dap"
-
-vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Nvim DAP: start debug session or continue execution of current session" })
-vim.keymap.set("n", "<leader>db", dap.continue, { desc = "Nvim DAP: toggle breakpoint on cursor" })
+vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "DAP: start or continue debug session" })
+vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "DAP: toggle breakpoint" })

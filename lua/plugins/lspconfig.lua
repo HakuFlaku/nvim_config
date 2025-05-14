@@ -38,15 +38,14 @@ return {
 	lazy = false,
 	config = function(_, opts)
 		require("mason").setup()
-		require("mason-lspconfig").setup{
-			automatic_enable = false
+		require("mason-lspconfig").setup {
+			automatic_enable = true,
+			ensure_installed = {"rust_analyzer", "lua_ls", "elixirls"}
 		}
 
 		vim.diagnostic.config(diagnostic_opts())
 
-		local lspconfig = require'lspconfig'
-
-		local on_attach = function(client, bufnr)
+		local on_attach = function(_, bufnr)
 			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
@@ -61,7 +60,7 @@ return {
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-		lspconfig.rust_analyzer.setup({
+		vim.lsp.config("rust_analyzer", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			settings = {
@@ -84,129 +83,25 @@ return {
 			}
 		})
 
-		lspconfig.elixirls.setup{
-			-- cmd = { vim.fn.expand("~/.elixirls/language_server.sh") },
+		vim.lsp.config("elixirls", {
+			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
 			on_attach = on_attach,
 			capabilities = capabilities,
-		}
+		})
 
 		vim.lsp.config("jdtls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-		vim.lsp.enable("jdtls")
-
-		-- ** Enables vuels which uses vetur.
-		--	Features enabled:
-		--		picks up bootstrap components
-		--		lifecycle methods (no docs)
-		--		props
-		--		Requires vetur config:
-		--			shows custom components
-		--			goto component type definition
-		--	Features missing:
-		--		show slot sections
-		
-		-- lspconfig.vuels.setup{}
-		
-		-- Some notes on vuels with vetur. It does a lot of things pretty nicely, but is missing some key aspects (like slots) and is two years dead in the water at this point. That said, this was built with vue 2 in mind, and thus does work with vue 2 better than Volar does out of the box. However, if possible, Volar should be what we look to use as it's actually maintained and is supported by the Vue team directly.
-
-		-- ** Enables ts and volar.
-		--	Enabled features:
-		--		goto definition of custom components
-		--		picks up custom components so long as they define a name and you import it once yourself.
-		--		Seems to pickup global components, format isn't in kebab case though
-		--	Missing features:
-		--		pickup bootstrap components (there are possibly ways to fix this)
-		--		available props.
-		-- lspconfig.ts_ls.setup {
-		-- 	init_options = {
-		-- 		plugins = {
-		-- 			{
-		-- 				name = '@vue/typescript-plugin',
-		-- 				location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-		-- 					.. "/node_modules/@vue/language-server",
-		-- 				languages = { 'vue' },
-		-- 			},
-		-- 		},
-		-- 	},
-		-- 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-		-- 	settings = {
-		-- 		typescript = {
-		-- 			inlayHints = {
-		-- 				includeInlayParameterNameHints = 'all',
-		-- 				includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-		-- 				includeInlayFunctionParameterTypeHints = true,
-		-- 				includeInlayVariableTypeHints = true,
-		-- 				includeInlayVariableTypeHintsWhenTypeMatchesName = true,
-		-- 				includeInlayPropertyDeclarationTypeHints = true,
-		-- 				includeInlayFunctionLikeReturnTypeHints = true,
-		-- 				includeInlayEnumMemberValueHints = true,
-		-- 			},
-		-- 		},
-		-- 	},
-		-- }
-		--
-		-- lspconfig.volar.setup {
-		-- 	init_options = {
-		-- 		vue = {
-		-- 			hybridMode = false,
-		-- 		},
-		-- 		typescript = {
-		-- 			tsdk = require("mason-registry").get_package("vue-language-server"):get_install_path()
-		--
-		-- 		}
-		-- 	},
-		-- 	settings = {
-		-- 		vue = {
-		-- 			complete = {
-		-- 				casing = {
-		-- 					tags = "kebabCase",
-		-- 				}
-		-- 			}
-		-- 		}
-		-- 	}
-		-- }
-		
-		-- lspconfig.volar.setup{
-		-- 	filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-		-- 	init_options = {
-		-- 		vue = {
-		-- 			-- disable hybrid mode
-		-- 			hybridMode = false,
-		-- 		},
-		-- 	},
-		-- 	settings = {
-		-- 		vue = {
-		-- 			complete = {
-		-- 				casing = {
-		-- 					props = "kebab",
-		-- 					tags = "kebab",
-		-- 				}
-		-- 			}
-		-- 		}
-		-- 	}
-		-- }
-		
-
-		vim.lsp.config('ts_ls', {
-			init_options = {
-				plugins = {
-					{
-						name = '@vue/typescript-plugin',
-						location = vim.fn.expand("$MASON/share/vue-language-server/node_modules/@vue/language-server"),
-						-- location = require("mason-registry").get_package("vue-language-server"):get_install_path()
-						-- 	.. "/node_modules/@vue/language-server",
-						languages = { 'vue' },
-					},
-				},
-			},
-			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+	
+		vim.lsp.config("tailwindcss", {
+			on_attach = on_attach,
+			capabilities = capabilities,
 		})
-		vim.lsp.enable('ts_ls')
 
-		-- No need to set `hybridMode` to `true` as it's the default value
-		vim.lsp.config('volar', {})
-		vim.lsp.enable('volar')
+		vim.lsp.config("lua_ls", {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
 	end,
 }
