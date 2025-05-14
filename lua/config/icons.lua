@@ -5,6 +5,9 @@ return {
 		space			= "·",
 		trail			= "~",
 	},
+	dap = {
+		breakpoint	= " ",
+	},
 	diagnostics = {
 		error			= " ",
 		warn			= " ",
