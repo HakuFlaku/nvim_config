@@ -31,8 +31,20 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
+		{
+			"mason-org/mason.nvim",
+			version = "1.11.0",
+			opts = {
+				registries = {
+					"github:nvim-java/mason-registry",
+					"github:mason-org/mason-registry",
+				}
+			}
+		},
+		{
+			"mason-org/mason-lspconfig.nvim",
+			version = "1.32.0"
+		}
 	},
 	lazy = false,
 	config = function(_, opts)
@@ -59,48 +71,48 @@ return {
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-		vim.lsp.config("rust_analyzer", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				["rust-analyzer"] = {
-					imports = {
-						granularity = {
-							group = "module",
-						},
-						prefix = "self",
-					},
-					cargo = {
-						buildScripts = {
-							enable = true,
-						},
-					},
-					procMacro = {
-						enable = true
-					},
-				}
-			}
-		})
+		-- vim.lsp.config("rust_analyzer", {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- 	settings = {
+		-- 		["rust-analyzer"] = {
+		-- 			imports = {
+		-- 				granularity = {
+		-- 					group = "module",
+		-- 				},
+		-- 				prefix = "self",
+		-- 			},
+		-- 			cargo = {
+		-- 				buildScripts = {
+		-- 					enable = true,
+		-- 				},
+		-- 			},
+		-- 			procMacro = {
+		-- 				enable = true
+		-- 			},
+		-- 		}
+		-- 	}
+		-- })
 
-		vim.lsp.config("elixirls", {
-			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
+		-- vim.lsp.config("elixirls", {
+		-- 	cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- })
 
 		vim.lsp.config("jdtls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("tailwindcss", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("lua_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
+		-- vim.lsp.config("tailwindcss", {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- })
+		--
+		-- vim.lsp.config("lua_ls", {
+		-- 	on_attach = on_attach,
+		-- 	capabilities = capabilities,
+		-- })
 	end,
 }
