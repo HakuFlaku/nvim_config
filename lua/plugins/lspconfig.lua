@@ -30,7 +30,6 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-	version = "2.1.0",
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
