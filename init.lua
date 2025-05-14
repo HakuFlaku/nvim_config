@@ -23,6 +23,7 @@ vim.opt.tabstop = 4
 
 require("config.lazy")
 require("nvim-tree.api").tree.open()
+vim.lsp.enable('jdtls')
 
 -- Set your color scheme/theme here, make sure you have a valid matching plugin
 vim.cmd'colorscheme catppuccin-macchiato'

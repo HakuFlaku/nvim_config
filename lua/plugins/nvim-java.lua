@@ -1,5 +1,6 @@
 return {
 	'nvim-java/nvim-java',
+	version = "2.1.1",
 	dependencies = {
 		"mfussenegger/nvim-dap",
 		"nvim-java/nvim-java-core",

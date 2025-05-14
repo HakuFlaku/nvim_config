@@ -33,7 +33,6 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-		"nvim-java/nvim-java",
 	},
 	lazy = false,
 	config = function(_, opts)
@@ -93,7 +92,7 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
-	
+
 		vim.lsp.config("tailwindcss", {
 			on_attach = on_attach,
 			capabilities = capabilities,
