@@ -98,6 +98,11 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.config("jdtls", {
+			-- on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
 		vim.lsp.config("volar", {
 			on_attach = on_attach,
 			capabilities = capabilities,
