@@ -11,5 +11,6 @@ return {
 		vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 		vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+		vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
 	end,
 }
