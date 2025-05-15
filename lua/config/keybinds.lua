@@ -19,3 +19,16 @@ local dap = require("dap")
 
 vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "DAP: start or continue debug session" })
 vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "DAP: toggle breakpoint" })
+
+-- Neotest
+local neotest = require'neotest'
+
+vim.keymap.set('n', '<leader>trr', neotest.run.run, { desc = "Neotest: run the nearest test" })
+vim.keymap.set('n', '<leader>trs', function() neotest.run.run(vim.fn.expand("%")) end, { desc = "Neotest: run the opened test suite" })
+vim.keymap.set('n', '<leader>trl', neotest.run.run_last, { desc = "Neotest: run the last ran test" })
+vim.keymap.set('n', '<leader>st', neotest.run.stop, { desc = "Neotest: stop a running test" })
+vim.keymap.set('n', '<leader>tst', neotest.summary.toggle, { desc = "Neotest: toggle summary panel" })
+vim.keymap.set('n', '<C-[><C-n>', function() neotest.jump.prev({ status = "failed" }) end, { desc = "Neotest: jump to previous failed test" })
+vim.keymap.set('n', '<C-]><C-n>', function() neotest.jump.next({ status = "failed" }) end, { desc = "Neotest: jump to next failed test" })
+vim.keymap.set('n', '[n', neotest.jump.prev, { desc = "Neotest: jump to previous test" })
+vim.keymap.set('n', ']n', neotest.jump.next, { desc = "Neotest: jump to next test" })
