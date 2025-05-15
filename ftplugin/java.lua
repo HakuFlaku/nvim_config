@@ -3,7 +3,8 @@ local config = {
 	root_dir = vim.fs.dirname(vim.fs.find({'gradlew', '.git', 'mvnw'}, { upward = true })[1]),
 	settings = {
 		java = {
-			-- format = {
+			format = {
+				enabled = false,
 			-- 	settings = {
 			-- 		-- Use Google Java style guidelines for formatting
 			-- 		-- To use, make sure to download the file from https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
@@ -11,11 +12,18 @@ local config = {
 			-- 		url = "~/.local/share/eclipse/eclipse-java-google-style.xml",
 			-- 		profile = "GoogleStyle",
 			-- 	},
-			-- },
-			signatureHelp = { enabled = true },
-			contentProvider = { preferred = 'fernflower' },  -- Use fernflower to decompile library code
-			-- Specify any completion options
+			},
+			saveActions = {
+				organizeImports = true,
+			},
+			signatureHelp = {
+				enabled = true
+			},
+			contentProvider = {
+				preferred = 'fernflower' -- Use fernflower to decompile library code
+			},
 			completion = {
+				guessMethodArguments = true,
 				favoriteStaticMembers = {
 					"org.junit.Assert.*",
 					"org.junit.Assume.*",
@@ -34,7 +42,6 @@ local config = {
 					"sun.*",
 				},
 			},
-			-- Specify any options for organizing imports
 			sources = {
 				organizeImports = {
 					starThreshold = 9999;

@@ -11,5 +11,22 @@ return {
 		"jeffkreeftmeijer/vim-numbertoggle",
 		version = "*",
 		lazy = false,
+	},
+	{
+		'simaxme/java.nvim',
+		opts = {
+			rename = {
+				enable = true,
+				nvimtree = true,
+				write_and_close = false,
+			},
+			snippets = {
+				enable = true,
+			},
+			root_markers = {
+				"main/java/",
+				"test/java/"
+			}
+		}
 	}
 }
