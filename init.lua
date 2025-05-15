@@ -22,7 +22,6 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
 require("config.lazy")
-require("nvim-tree.api").tree.open()
 
 -- Set your color scheme/theme here, make sure you have a valid matching plugin
 vim.cmd'colorscheme catppuccin-macchiato'
