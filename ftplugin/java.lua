@@ -60,7 +60,20 @@ local config = {
 				useBlocks = true,
 				insertionLocation = "lastMember",
 			},
+			configuration = {
+				runtimes = {
+					{
+						name = "JavaSE-17",
+						path = "/mnt/c/Users/vissera/.jdks/jdk-17.0.13+11/"
+					}
+				}
+			}
 		},
 	},
+	init_options = {
+		bundles = {
+			vim.fn.expand("$MASON/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.53.1.jar")
+		}
+	}
 }
 require('jdtls').start_or_attach(config)

@@ -7,6 +7,15 @@ return {
 
 		local dap = require("dap")
 
+		dap.configurations.java = {
+			{
+				name = "Launch Local",
+				type = "java",
+				request = "launch",
+				vmArgs = "-Dspring.profiles.active=local"
+			}
+		}
+
 		dap.adapters.codelldb = {
 			type = 'server',
 			port = "${port}",
