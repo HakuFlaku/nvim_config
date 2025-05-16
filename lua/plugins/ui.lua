@@ -36,5 +36,15 @@ return {
 		name = "catppuccin",
 		lazy = false,
 		priority = 1000
+	},
+	{
+		"theHamsta/nvim-dap-virtual-text",
+		opts = {
+			enabled = true,
+			enabled_commands = true,
+			highlight_changed_variables = true,
+			only_first_definition = true,
+			virt_text_pos = 'eol',
+		},
 	}
 }

@@ -61,12 +61,12 @@ local config = {
 				insertionLocation = "lastMember",
 			},
 			configuration = {
-				runtimes = {
-					{
-						name = "JavaSE-17",
-						path = "/mnt/c/Users/vissera/.jdks/jdk-17.0.13+11/"
-					}
-				}
+				-- runtimes = {
+				-- 	{
+				-- 		name = "JavaSE-17",
+				-- 		path = "/mnt/c/Users/vissera/.jdks/jdk-17.0.13+11/"
+				-- 	}
+				-- }
 			}
 		},
 	},

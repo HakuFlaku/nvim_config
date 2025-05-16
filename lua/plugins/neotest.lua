@@ -4,7 +4,6 @@ return {
 		ft = "java",
 		dependencies = {
 			"rcarriga/nvim-dap-ui", -- recommended
-			"theHamsta/nvim-dap-virtual-text", -- recommended
 		},
 	},
 	{

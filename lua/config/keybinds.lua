@@ -17,8 +17,13 @@ vim.keymap.set("n", "<leader>tt", nvim_tree.tree.toggle, { desc = "Nvim Tree: to
 -- DAP
 local dap = require("dap")
 
-vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "DAP: start or continue debug session" })
-vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "DAP: toggle breakpoint" })
+vim.keymap.set("n", "<F5>", dap.continue, { desc = "DAP: start or continue debug session" })
+vim.keymap.set("n", "<F2>", dap.step_over, { desc = "DAP: step over" })
+vim.keymap.set("n", "<F3>", dap.step_into, { desc = "DAP: step into" })
+vim.keymap.set("n", "<F4>", dap.step_out, { desc = "DAP: step out" })
+vim.keymap.set("n", "<F6>", dap.run_to_cursor, { desc = "DAP: run to cursor" })
+vim.keymap.set("n", "<localleader>bc", dap.clear_breakpoints, { desc = "DAP: clear all breakpoints" })
+vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: toggle breakpoint" })
 
 -- Neotest
 local neotest = require'neotest'
