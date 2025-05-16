@@ -33,6 +33,7 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
+		"mfussenegger/nvim-jdtls",
 	},
 	lazy = false,
 	config = function(_, opts)
@@ -89,6 +90,11 @@ return {
 		})
 
 		vim.lsp.config("lua_ls", {
+			on_attach = on_attach,
+			capabilities = capabilities,
+		})
+
+		vim.lsp.config("jdtls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
