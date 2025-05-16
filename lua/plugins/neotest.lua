@@ -2,9 +2,6 @@ return {
 	{
 		"rcasia/neotest-java",
 		ft = "java",
-		dependencies = {
-			"rcarriga/nvim-dap-ui", -- recommended
-		},
 	},
 	{
 		"nvim-neotest/neotest",
