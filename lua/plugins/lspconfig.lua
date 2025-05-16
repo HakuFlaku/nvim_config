@@ -94,9 +94,15 @@ return {
 			capabilities = capabilities,
 		})
 
+		require('spring_boot').init_lsp_commands()
 		vim.lsp.config("jdtls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
+			init_options = {
+				bundles = {
+					require("spring_boot").java_extensions()
+				}
+			}
 		})
 
 		vim.lsp.config("volar", {

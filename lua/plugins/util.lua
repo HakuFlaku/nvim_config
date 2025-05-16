@@ -1,3 +1,13 @@
+vim.g.spring_boot = {
+	jdt_extendions_path = "~/Downloads/vscode-spring-boot-1.62.0/",
+	jdt_extensions_jars = {
+		"io.projectreactor.reactor-core.jar",
+		"org.reactivestreams.reactive-streams.jar",
+		"jdt-ls-commons.jar",
+		"jdt-ls-extension.jar",
+	},
+}
+
 return {
 	{
 		"vim-scripts/java_getset.vim",
@@ -28,5 +38,16 @@ return {
 				"test/java/"
 			}
 		}
+	},
+	{
+		"JavaHello/spring-boot.nvim",
+		lazy = true,
+		opts = {
+			ls_path = "~/Downloads/vscode-spring-boot-1.62.0/"
+		}
 	}
+	-- {
+	-- 	"elmcgill/springboot-nvim",
+	-- 	opts = {}
+	-- }
 }

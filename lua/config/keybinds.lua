@@ -41,3 +41,9 @@ vim.keymap.set('n', '<C-[><C-n>', function() neotest.jump.prev({ status = "faile
 vim.keymap.set('n', '<C-]><C-n>', function() neotest.jump.next({ status = "failed" }) end, { desc = "Neotest: jump to next failed test" })
 vim.keymap.set('n', '[n', neotest.jump.prev, { desc = "Neotest: jump to previous test" })
 vim.keymap.set('n', ']n', neotest.jump.next, { desc = "Neotest: jump to next test" })
+
+-- springboot
+-- local springboot = require('springboot-nvim')
+--
+-- vim.keymap.set('n', '<leader>gc', springboot.generate_class, { desc = "SpringBoot: generate Java class" })
+-- vim.keymap.set('n', '<leader>gi', springboot.generate_interface, { desc = "SpringBoot: generate Java interface" })
