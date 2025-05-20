@@ -1,3 +1,4 @@
+vim.loader.enable(true)
 local icons = require("config.icons")
 
 -- Disable providers that I don't need

@@ -1,4 +1,10 @@
 return {
+	dashboard = {
+		find_file	= "󰱼 ",
+		settings	= " ",
+		quit		= "󰿅 ",
+		explorer	= "󰙅 ",
+	},
 	misc = {
 		blank_square	= "󰝤 ",
 		tab				= "│ ",

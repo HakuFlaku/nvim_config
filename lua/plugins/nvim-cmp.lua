@@ -79,6 +79,11 @@ return {
 			},
 		})
 
+		cmp.event:on(
+			'confirm_done',
+			require('nvim-autopairs.completion.cmp').on_confirm_done()
+		)
+
 		vim.cmd([[
 		set completeopt=menuone,noinsert,noselect
 		highlight! default link CmpItemKind CmpItemMenuDefault
