@@ -73,7 +73,7 @@ local config = {
 	init_options = {
 		bundles = {
 			vim.fn.expand("$MASON/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-0.53.1.jar"),
-			-- require('spring_boot').java_extensions()
+			require("spring_boot").java_extensions()
 		}
 	}
 }

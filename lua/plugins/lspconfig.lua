@@ -31,7 +31,15 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"mason-org/mason.nvim",
+		{
+			"mason-org/mason.nvim",
+			opts = {
+				registries = {
+					"github:nvim-java/mason-registry",
+					"github:mason-org/mason-registry"
+				}
+			}
+		},
 		"mason-org/mason-lspconfig.nvim",
 		"mfussenegger/nvim-jdtls",
 	},
@@ -99,11 +107,13 @@ return {
 			on_attach = on_attach,
 			capabilities = capabilities,
 			init_options = {
-				bundles = {
-					require("spring_boot").java_extensions()
-				}
+				-- bundles = {
+				-- 	require("spring_boot").java_extensions()
+				-- }
+				bundles = require("spring_boot").java_extensions()
 			}
 		})
+		require("spring_boot").init_lsp_commands()
 
 		vim.lsp.config("volar", {
 			on_attach = on_attach,
