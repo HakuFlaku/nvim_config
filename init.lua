@@ -17,21 +17,18 @@ vim.opt.list = true
 -- Default turn on hybrid number in the left gutter
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.scrolloff = 3
 
 -- reduce the default tab sizes, 8 is a bit large for me
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
+vim.opt.cursorline = true
+vim.opt.cursorcolumn = true
+
 require("config.lazy")
 
 -- Set your color scheme/theme here, make sure you have a valid matching plugin
 vim.cmd'colorscheme catppuccin-macchiato'
-
--- Set a custom theme for the command line section
-require('lualine').setup {
-	options = {
-		theme = 'seoul256',
-	}
-}
 
 require("config.keybinds")

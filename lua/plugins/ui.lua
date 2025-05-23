@@ -2,72 +2,28 @@ local icons = require("config.icons")
 
 return {
 	{
-		"lewis6991/gitsigns.nvim",
-	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {
-			presets = {
-				long_message_to_split = true,
-			},
-			cmdline = {
-				enabled = true, -- Disabling this aspect of noice essentially removes the entire command line which isn't great. However I prefer the stock cmdline.
-				view = "cmdline" -- This get's _close_ to the original form, but it's still modified which isn't ideal for me.
-			},
-			lsp = {
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true,
-				},
-			},
-			routes = {
-				{
-					filter = {
-						event = "msg_show",
-						any = {
-							{ find = "%d+L, %d+B" },
-							{ find = "; after #%d+" },
-							{ find = "; before #%d+" },
-						},
-					},
-					view = "mini",
-				},
-			},
-		}
-	},
-	{
 		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			local highlight = {
-				"flagBlue",
-				"flagPink",
-				"flagWhite",
-			}
-
-			local hooks = require "ibl.hooks"
-			-- create the highlight groups in the highlight setup hook, so they are reset
-			-- every time the colorscheme changes
-			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "flagBlue", { fg = "#5BCFFB" })
-				vim.api.nvim_set_hl(0, "flagPink", { fg = "#F5ABB9" })
-				vim.api.nvim_set_hl(0, "flagWhite", { fg = "#FFFFFF" })
-			end)
-
-			require("ibl").setup {
-				indent = { highlight = highlight },
-			}
-		end
+		main = "ibl",
+		opts = {},
 	},
 	{
 		'nvim-lualine/lualine.nvim',
 		version = "*",
 		lazy = false,
-		dependencies = { 'nvim-tree/nvim-web-devicons' }
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		opts = {
+			options = {
+				theme = "auto"
+			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_c = { "filename" },
+				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_y = { "progress", "location" },
+				lualine_z = { "lsp_status" }
+			},
+		},
 	},
 	{
 		"catppuccin/nvim",
@@ -137,7 +93,6 @@ return {
 			local dashboard_options = require("config.dashboard_options")
 			math.randomseed(os.time())
 			local choice = math.random(#dashboard_options)
-			print("Loading dashboard choice: " .. choice)
 
 			-- Set header
 			dashboard.section.header.val = dashboard_options[choice]

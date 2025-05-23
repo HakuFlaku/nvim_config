@@ -25,7 +25,7 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.close(),
-				["<CR>"] = cmp.mapping.confirm({
+				["<Tab>"] = cmp.mapping.confirm({
 					behavior = cmp.ConfirmBehavior.Replace,
 					select = true,
 				}),
@@ -40,7 +40,6 @@ return {
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
-				{ name = "html-css" },
 			}),
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
@@ -51,6 +50,7 @@ return {
 					local doc = entry.completion_item.documentation
 					local label_details = entry.completion_item.labelDetails
 
+					-- Nicer colour indication for tailwind-tools
 					if item.kind == "Color" and doc then
 						local content = type(doc) == "string" and doc or doc.value
 						local r, g, b = utils.extract_color(content)
@@ -68,11 +68,6 @@ return {
 					end
 
 					item.kind = icons.cmp_kind[item.kind]
-
-					-- Need this otherwise the options don't appear??
-					-- if entry.source.name == "html-css" then
-					-- 	item.menu = "[" .. (entry.completion_item.provider or "html-css") .. "]"
-					-- end
 
 					return item
 				end,

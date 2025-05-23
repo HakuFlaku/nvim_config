@@ -40,7 +40,7 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup {
 			automatic_enable = true,
-			ensure_installed = {"rust_analyzer", "lua_ls", "elixirls", "volar"}
+			ensure_installed = {"rust_analyzer", "lua_ls", "elixirls" }
 		}
 
 		vim.diagnostic.config(diagnostic_opts())
