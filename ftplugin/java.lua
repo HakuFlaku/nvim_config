@@ -76,4 +76,11 @@ local config = {
 		}
 	}
 }
+
+vim.lsp.inlay_hint.enable(true)
+vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {buffer = true})
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {buffer = true})
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, {buffer = true})
+vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, {buffer = true})
+
 require('jdtls').start_or_attach(config)
