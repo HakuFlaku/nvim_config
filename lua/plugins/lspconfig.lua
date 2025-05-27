@@ -40,7 +40,7 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup {
 			automatic_enable = true,
-			ensure_installed = {"rust_analyzer", "lua_ls", "elixirls" }
+			ensure_installed = { "rust_analyzer", "lua_ls", "elixirls" }
 		}
 
 		vim.diagnostic.config(diagnostic_opts())
@@ -94,15 +94,9 @@ return {
 			capabilities = capabilities,
 		})
 
-		vim.lsp.config("volar", {
+		vim.lsp.config("ts_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
-			filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-			init_options = {
-				vue = {
-					hybridMode = false,
-				},
-			},
 		})
 	end,
 }

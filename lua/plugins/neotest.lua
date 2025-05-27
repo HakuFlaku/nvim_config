@@ -4,6 +4,10 @@ return {
 		ft = "java",
 	},
 	{
+		"marilari88/neotest-vitest",
+		ft = { "javascript", "javascriptreact" }
+	},
+	{
 		"nvim-neotest/neotest",
 		lazy = true,
 		dependencies = {
@@ -11,11 +15,16 @@ return {
 			"antoinemadec/FixCursorHold.nvim",
 		},
 		config = function()
-			require("neotest").setup({
+			require"neotest".setup({
 				adapters = {
-					require("neotest-java")({
+					require("neotest-java") {
 						-- config here
-					}),
+					},
+					require("neotest-vitest") {
+						filter_dir = function(name, _rel_path, _root)
+							return name ~= "node_modules"
+						end,
+					}
 				}
 			})
 		end,
