@@ -1,14 +1,12 @@
 local function diagnostic_opts()
 	local icons = require("config.icons")
 	return {
-		diagnostics = {
-			underline = true,
-			update_in_insert = false,
-			virtual_text = {
-				spacing = 4,
-				source = "if_many",
-				prefix = icons.diagnostics.virtual_prefix,
-			},
+		underline = true,
+		update_in_insert = false,
+		virtual_text = {
+			spacing = 4,
+			source = "if_many",
+			prefix = icons.diagnostics.virtual_prefix,
 		},
 		severity_sort = true,
 		signs = {
@@ -18,12 +16,6 @@ local function diagnostic_opts()
 				[vim.diagnostic.severity.HINT] = icons.diagnostics.hint,
 				[vim.diagnostic.severity.INFO] = icons.diagnostics.info,
 			},
-		},
-		inlay_hints = {
-			enabled = true,
-		},
-		codelens = {
-			enabled = true,
 		},
 	}
 end
@@ -97,6 +89,30 @@ return {
 		vim.lsp.config("ts_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
+			settings = {
+				javascript = {
+					inlayHints = {
+						includeInlayEnumMemberValueHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayVariableTypeHints = false,
+					},
+				},
+				typescript = {
+					inlayHints = {
+						includeInlayEnumMemberValueHints = true,
+						includeInlayFunctionLikeReturnTypeHints = true,
+						includeInlayFunctionParameterTypeHints = true,
+						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+						includeInlayPropertyDeclarationTypeHints = true,
+						includeInlayVariableTypeHints = false,
+					},
+				},
+			}
 		})
 
 		vim.lsp.config("cssls", {
