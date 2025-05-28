@@ -40,6 +40,7 @@ return {
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
+				{ name = "html-css" },
 			}),
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
