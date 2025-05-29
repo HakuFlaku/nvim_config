@@ -35,12 +35,12 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			sources = cmp.config.sources({
+				{ name = "html-css" },
 				{ name = "nvim_lsp" },
 				{ name = "vsnip" },
 				{ name = "buffer" },
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
-				{ name = "html-css" },
 			}),
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
