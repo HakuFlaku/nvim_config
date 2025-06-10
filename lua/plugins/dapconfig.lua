@@ -25,28 +25,6 @@ return {
 			}
 		}
 
-		dap.adapters.codelldb = {
-			type = 'server',
-			port = "${port}",
-			executable = {
-				command = vim.fn.expand'$MASON/packages/codelldb/extension/adapter/codelldb',
-				args = {"--port", "${port}"},
-			}
-		}
-
-		dap.configurations.rust = {
-			{
-				name = "Launch file",
-				type = "codelldb",
-				request = "launch",
-				program = function()
-					return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/target/debug/', 'file')
-				end,
-				cwd = '${workspaceFolder}',
-				stopOnEntry = false
-			},
-		}
-
 		dap.adapters.mix_task = {
 			type = 'executable',
 			command = vim.fn.stdpath("data") .. '/mason/bin/elixir-ls-debugger';

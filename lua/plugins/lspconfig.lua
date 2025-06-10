@@ -32,7 +32,7 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup {
 			automatic_enable = true,
-			ensure_installed = { "rust_analyzer", "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls" }
+			ensure_installed = { "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls" }
 		}
 
 		vim.diagnostic.config(diagnostic_opts())
@@ -46,29 +46,6 @@ return {
 		end
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-		vim.lsp.config("rust_analyzer", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				["rust-analyzer"] = {
-					imports = {
-						granularity = {
-							group = "module",
-						},
-						prefix = "self",
-					},
-					cargo = {
-						buildScripts = {
-							enable = true,
-						},
-					},
-					procMacro = {
-						enable = true
-					},
-				}
-			}
-		})
 
 		vim.lsp.config("elixirls", {
 			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
