@@ -46,7 +46,6 @@ return {
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-<<<<<<< HEAD
 		vim.lsp.config("elixirls", {
 			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
 			on_attach = on_attach,
@@ -58,8 +57,6 @@ return {
 			capabilities = capabilities,
 		})
 
-=======
->>>>>>> main
 		vim.lsp.config("lua_ls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
