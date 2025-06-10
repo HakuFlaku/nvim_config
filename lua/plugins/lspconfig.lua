@@ -25,14 +25,13 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-		"mfussenegger/nvim-jdtls",
 	},
 	lazy = false,
 	config = function(_, opts)
 		require("mason").setup()
 		require("mason-lspconfig").setup {
 			automatic_enable = true,
-			ensure_installed = { "rust_analyzer", "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls" }
+			ensure_installed = { "lua_ls" }
 		}
 
 		vim.diagnostic.config(diagnostic_opts())
@@ -47,75 +46,7 @@ return {
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-		vim.lsp.config("rust_analyzer", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				["rust-analyzer"] = {
-					imports = {
-						granularity = {
-							group = "module",
-						},
-						prefix = "self",
-					},
-					cargo = {
-						buildScripts = {
-							enable = true,
-						},
-					},
-					procMacro = {
-						enable = true
-					},
-				}
-			}
-		})
-
-		vim.lsp.config("elixirls", {
-			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("tailwindcss", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
 		vim.lsp.config("lua_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("ts_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				javascript = {
-					inlayHints = {
-						includeInlayEnumMemberValueHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayVariableTypeHints = false,
-					},
-				},
-				typescript = {
-					inlayHints = {
-						includeInlayEnumMemberValueHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayVariableTypeHints = false,
-					},
-				},
-			}
-		})
-
-		vim.lsp.config("cssls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})

@@ -6,20 +6,9 @@ return {
 
 		configs.setup({
 			ensure_installed = {
-				"c",
 				"lua",
 				"vim",
 				"vimdoc",
-				"query",
-				"elixir",
-				"heex",
-				"rust",
-				"html",
-				"eex",
-				"css",
-				"vue",
-				"javascript",
-				"java",
 			},
 			sync_install = false,
 			highlight = { enable = true },
