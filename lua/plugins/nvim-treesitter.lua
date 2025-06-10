@@ -6,7 +6,6 @@ return {
 
 		configs.setup({
 			ensure_installed = {
-				"c",
 				"lua",
 				"vim",
 				"vimdoc",
@@ -18,6 +17,7 @@ return {
 				"css",
 				"javascript",
 				"java",
+				"markdown",
 			},
 			sync_install = false,
 			highlight = { enable = true },

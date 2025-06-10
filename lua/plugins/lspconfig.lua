@@ -25,7 +25,6 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-		"mfussenegger/nvim-jdtls",
 	},
 	lazy = false,
 	config = function(_, opts)
@@ -47,6 +46,7 @@ return {
 
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+<<<<<<< HEAD
 		vim.lsp.config("elixirls", {
 			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
 			on_attach = on_attach,
@@ -58,41 +58,9 @@ return {
 			capabilities = capabilities,
 		})
 
+=======
+>>>>>>> main
 		vim.lsp.config("lua_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("ts_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-			settings = {
-				javascript = {
-					inlayHints = {
-						includeInlayEnumMemberValueHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayVariableTypeHints = false,
-					},
-				},
-				typescript = {
-					inlayHints = {
-						includeInlayEnumMemberValueHints = true,
-						includeInlayFunctionLikeReturnTypeHints = true,
-						includeInlayFunctionParameterTypeHints = true,
-						includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-						includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-						includeInlayPropertyDeclarationTypeHints = true,
-						includeInlayVariableTypeHints = false,
-					},
-				},
-			}
-		})
-
-		vim.lsp.config("cssls", {
 			on_attach = on_attach,
 			capabilities = capabilities,
 		})
