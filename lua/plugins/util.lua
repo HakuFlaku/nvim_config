@@ -23,7 +23,6 @@ return {
 		}
 	},
 	{
-		-- Doesn't work
 		"Jezda1337/nvim-html-css",
 		opts = {
 			enable_on = {
