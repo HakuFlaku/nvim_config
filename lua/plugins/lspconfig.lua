@@ -25,6 +25,7 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
+		"mfussenegger/nvim-jdtls",
 	},
 	lazy = false,
 	config = function(_, opts)
