@@ -25,7 +25,12 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
-		"mfussenegger/nvim-jdtls",
+		{
+			"mfussenegger/nvim-jdtls",
+			dependencies = {
+				"mfussenegger/nvim-dap"
+			}
+		},
 	},
 	lazy = false,
 	config = function(_, opts)

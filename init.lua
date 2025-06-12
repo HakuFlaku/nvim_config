@@ -26,6 +26,9 @@ vim.opt.tabstop = 4
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 
+vim.opt.colorcolumn=80
+vim.opt.linebreak=true
+
 require("config.lazy")
 
 -- Set your color scheme/theme here, make sure you have a valid matching plugin
