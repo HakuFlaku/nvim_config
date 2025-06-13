@@ -6,7 +6,16 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim"
 	},
 	config = function()
-		require("telescope").setup {
+		local ts = require'telescope'
+		local ts_actions = require'telescope.actions'
+		ts.setup {
+			defaults = {
+				mappings = {
+					n = {
+						["q"] = ts_actions.close
+					}
+				}
+			},
 			extensions = {
 				["ui-select"] = {
 					require("telescope.themes").get_cursor {
@@ -16,6 +25,6 @@ return {
 				}
 			}
 		}
-		require("telescope").load_extension("ui-select")
+		ts.load_extension("ui-select")
 	end,
 }
