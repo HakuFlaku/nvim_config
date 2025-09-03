@@ -16,6 +16,10 @@ return {
 		version = "*",
 		lazy = false,
 	},
+	-- {
+	-- 	"neoclide/vim-jsx-improve",
+	-- 	lazy = true,
+	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {

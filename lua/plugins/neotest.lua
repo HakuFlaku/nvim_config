@@ -18,7 +18,6 @@ return {
 			require"neotest".setup({
 				adapters = {
 					require("neotest-java") {
-						-- config here
 					},
 					require("neotest-vitest") {
 						filter_dir = function(name, _rel_path, _root)
