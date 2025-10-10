@@ -33,6 +33,7 @@ vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "DAP: toggle br
 local neotest = require('neotest')
 
 vim.keymap.set('n', '<leader>trr', neotest.run.run, { desc = "Neotest: run the nearest test" })
+vim.keymap.set('n', '<leader>trd', function() neotest.run.run({strategy = 'dap'}) end, { desc = "Neotest: run the nearest test in debug" })
 vim.keymap.set('n', '<leader>trs', function() neotest.run.run(vim.fn.expand("%")) end, { desc = "Neotest: run the opened test suite" })
 vim.keymap.set('n', '<leader>trl', neotest.run.run_last, { desc = "Neotest: run the last ran test" })
 vim.keymap.set('n', '<leader>st', neotest.run.stop, { desc = "Neotest: stop a running test" })
