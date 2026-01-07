@@ -21,45 +21,54 @@ local function diagnostic_opts()
 end
 
 return {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim"
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"mason-org/mason.nvim",
+			"mason-org/mason-lspconfig.nvim"
+		},
+		lazy = false,
+		config = function(_, opts)
+			require("mason").setup()
+			require("mason-lspconfig").setup {
+				automatic_enable = true,
+				ensure_installed = { "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls" }
+			}
+
+			vim.diagnostic.config(diagnostic_opts())
+
+			local on_attach = function(_, bufnr)
+				vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+				vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+				vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+				vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
+			end
+
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+			vim.lsp.config("elixirls", {
+				cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config("tailwindcss", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config("lua_ls", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+		end,
 	},
-	lazy = false,
-	config = function(_, opts)
-		require("mason").setup()
-		require("mason-lspconfig").setup {
-			automatic_enable = true,
-			ensure_installed = { "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls" }
-		}
-
-		vim.diagnostic.config(diagnostic_opts())
-
-		local on_attach = function(_, bufnr)
-			vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-			vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
-		end
-
-		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-		vim.lsp.config("elixirls", {
-			cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("tailwindcss", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-
-		vim.lsp.config("lua_ls", {
-			on_attach = on_attach,
-			capabilities = capabilities,
-		})
-	end,
+	{
+		'nvim-java/nvim-java',
+		config = function()
+			require('java').setup()
+			vim.lsp.enable('jdtls')
+		end,
+	},
 }
