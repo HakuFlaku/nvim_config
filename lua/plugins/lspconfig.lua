@@ -24,13 +24,7 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
 		"mason-org/mason.nvim",
-		"mason-org/mason-lspconfig.nvim",
-		{
-			"mfussenegger/nvim-jdtls",
-			dependencies = {
-				"mfussenegger/nvim-dap"
-			}
-		},
+		"mason-org/mason-lspconfig.nvim"
 	},
 	lazy = false,
 	config = function(_, opts)

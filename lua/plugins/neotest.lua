@@ -1,8 +1,8 @@
 return {
-	{
-		"rcasia/neotest-java",
-		ft = "java",
-	},
+	-- {
+	-- 	"rcasia/neotest-java",
+	-- 	ft = "java",
+	-- },
 	{
 		"marilari88/neotest-vitest",
 		ft = { "javascript", "javascriptreact" }
@@ -17,8 +17,8 @@ return {
 		config = function()
 			require"neotest".setup({
 				adapters = {
-					require("neotest-java") {
-					},
+					-- require("neotest-java") {
+					-- },
 					require("neotest-vitest") {
 						filter_dir = function(name, _rel_path, _root)
 							return name ~= "node_modules"
