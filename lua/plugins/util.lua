@@ -23,26 +23,14 @@ return {
 		}
 	},
 	{
-		"Jezda1337/nvim-html-css",
+		'MeanderingProgrammer/render-markdown.nvim',
+		ft = "markdown",
+		dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
 		opts = {
-			enable_on = {
-				"html",
-				"jsx",
-				"tsx",
-			},
-			handlers = {
-				definition = {
-					bind = "gd",
+			completions = {
+				lsp = {
+					enabled = true,
 				},
-				hover = {
-					bind = "K",
-					wrap = true,
-					border = "none",
-					position = "cursor",
-				},
-			},
-			documentation = {
-				auto_show = true,
 			},
 		},
 	},

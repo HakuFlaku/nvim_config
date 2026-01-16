@@ -30,6 +30,12 @@ vim.opt.linebreak = true
 
 require("config.lazy")
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
+
 -- Set your color scheme/theme here, make sure you have a valid matching plugin
 vim.cmd'colorscheme catppuccin-macchiato'
 
