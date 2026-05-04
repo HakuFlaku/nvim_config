@@ -44,3 +44,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 		vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
 	end,
 })
+
+vim.filetype.add({
+	extension = {
+		tf = 'terraform'
+	}
+})
