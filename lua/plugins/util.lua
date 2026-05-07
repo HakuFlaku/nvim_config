@@ -16,11 +16,39 @@ return {
 		version = "*",
 		lazy = false,
 	},
+	-- {
+	-- 	"neoclide/vim-jsx-improve",
+	-- 	lazy = true,
+	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			current_line_blame = true,
 		}
+	},
+	{
+		"Jezda1337/nvim-html-css",
+		opts = {
+			enable_on = {
+				"html",
+				"jsx",
+				"tsx",
+			},
+			handlers = {
+				definition = {
+					bind = "gd",
+				},
+				hover = {
+					bind = "K",
+					wrap = true,
+					border = "none",
+					position = "cursor",
+				},
+			},
+			documentation = {
+				auto_show = true,
+			},
+		},
 	},
 	{
 		"luckasRanarison/tailwind-tools.nvim",
@@ -45,5 +73,19 @@ return {
 				},
 			},
 		},
+	},
+	{
+		'alessio-vivaldelli/java-creator-nvim',
+		ft = 'java',
+		opts = {
+			keymaps = {
+				java_new = "<leader>jn",
+			},
+			options = {
+				auto_open = true,  -- Open file after creation
+				java_version = 17  -- Minimum Java version
+			}
+		}
 	}
+
 }

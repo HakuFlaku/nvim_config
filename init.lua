@@ -27,6 +27,9 @@ vim.opt.tabstop = 4
 vim.opt.cursorline = true
 vim.opt.cursorcolumn = true
 
+vim.opt.colorcolumn="120"
+vim.opt.linebreak=true
+
 require("config.lazy")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -39,3 +42,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.cmd'colorscheme catppuccin-macchiato'
 
 require("config.keybinds")
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	group = vim.api.nvim_create_augroup('highlight_yank', {}),
+	desc = 'Hightlight selection on yank',
+	pattern = '*',
+	callback = function()
+		vim.highlight.on_yank { higroup = 'IncSearch', timeout = 500 }
+	end,
+})
+
+vim.filetype.add({
+	extension = {
+		tf = 'terraform'
+	}
+})

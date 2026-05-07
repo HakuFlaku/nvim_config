@@ -35,6 +35,7 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			sources = cmp.config.sources({
+				{ name = "html-css" },
 				{ name = "render-markdown" },
 				{ name = "nvim_lsp" },
 				{ name = "vsnip" },

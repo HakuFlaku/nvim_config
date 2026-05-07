@@ -101,7 +101,9 @@ return {
 			dashboard.section.buttons.val = {
 				dashboard.button( "e", icons.dashboard.explorer .. " > Open tree ", ":NvimTreeOpen<CR>"),
 				dashboard.button( "f", icons.dashboard.find_file .. " > Find file", ":Telescope find_files<CR>"),
-				dashboard.button( "s", icons.dashboard.settings .. " > Settings" , ":e $MYVIMRC | :cd %:p:h | NvimTreeOpen | wincmd k | pwd<CR>"),
+				dashboard.button( "s", icons.dashboard.settings .. " > Settings" , ":e $MYVIMRC | :cd %:p:h | wincmd k | pwd<CR>"),
+				dashboard.button( "l", icons.dashboard.lazy_manager .. " > Open Lazy", ":Lazy<CR>"),
+				dashboard.button( "m", icons.dashboard.mason .. " > Open Mason", ":Mason<CR>"),
 				dashboard.button( "q", icons.dashboard.quit .. " > Quit NVIM", ":qa<CR>"),
 			}
 			-- Send config to alpha

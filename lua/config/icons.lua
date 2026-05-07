@@ -1,9 +1,11 @@
 return {
 	dashboard = {
-		find_file	= "󰱼 ",
-		settings	= " ",
-		quit		= "󰿅 ",
-		explorer	= "󰙅 ",
+		find_file		= "󰱼 ",
+		settings		= " ",
+		quit			= "󰿅 ",
+		lazy_manager	= "󰒲 ",
+		explorer		= "󰙅 ",
+		mason			= " ",
 	},
 	misc = {
 		blank_square	= "󰝤 ",
