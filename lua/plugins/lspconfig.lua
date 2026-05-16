@@ -32,7 +32,7 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup {
 				automatic_enable = true,
-				ensure_installed = { "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls" }
+				ensure_installed = { "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls", "html", "rust_analyzer" }
 			}
 
 			vim.diagnostic.config(diagnostic_opts())
@@ -59,6 +59,16 @@ return {
 			})
 
 			vim.lsp.config("lua_ls", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config("cssls", {
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config("html", {
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})

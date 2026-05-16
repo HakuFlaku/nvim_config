@@ -1,8 +1,4 @@
 return {
-	-- {
-	-- 	"rcasia/neotest-java",
-	-- 	ft = "java",
-	-- },
 	{
 		"marilari88/neotest-vitest",
 		ft = { "javascript", "javascriptreact" }
@@ -24,6 +20,7 @@ return {
 							return name ~= "node_modules"
 						end,
 					}
+					require('rustaceanvim.neotest')
 				}
 			})
 		end,
