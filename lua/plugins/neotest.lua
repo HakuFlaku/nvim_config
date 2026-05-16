@@ -19,7 +19,7 @@ return {
 						filter_dir = function(name, _rel_path, _root)
 							return name ~= "node_modules"
 						end,
-					}
+					},
 					require('rustaceanvim.neotest')
 				}
 			})

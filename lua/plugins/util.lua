@@ -86,7 +86,7 @@ return {
 				java_version = 17  -- Minimum Java version
 			}
 		}
-	}
+	},
 	{
 		"luckasRanarison/tailwind-tools.nvim",
 		name = "tailwind-tools",
