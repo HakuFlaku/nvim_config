@@ -31,7 +31,11 @@ return {
 		config = function(_, opts)
 			require("mason").setup()
 			require("mason-lspconfig").setup {
-				automatic_enable = true,
+				automatic_enable = {
+					exclude = {
+						"rust_analyzer"
+					}
+				},
 				ensure_installed = { "lua_ls", "elixirls", "ts_ls", "jdtls", "cssls", "html", "rust_analyzer" }
 			}
 
@@ -49,11 +53,6 @@ return {
 
 			vim.lsp.config("elixirls", {
 				cmd = { vim.fn.expand("$MASON/packages/elixir-ls/language_server.sh") },
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
-
-			vim.lsp.config("tailwindcss", {
 				on_attach = on_attach,
 				capabilities = capabilities,
 			})

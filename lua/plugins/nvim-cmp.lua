@@ -46,22 +46,8 @@ return {
 			formatting = {
 				fields = { 'abbr', 'kind', 'menu' },
 				format = function(entry, item)
-					local utils = require("tailwind-tools.utils")
-					local config = require("tailwind-tools.config")
 					local icons = require("config.icons")
-					local doc = entry.completion_item.documentation
 					local label_details = entry.completion_item.labelDetails
-
-					-- Nicer colour indication for tailwind-tools
-					if item.kind == "Color" and doc then
-						local content = type(doc) == "string" and doc or doc.value
-						local r, g, b = utils.extract_color(content)
-						local style = config.options.cmp.highlight
-
-						if r then
-							item.kind_hl_group = utils.set_hl_from(r, g, b, style)
-						end
-					end
 
 					if label_details and label_details.description then
 						item.menu = label_details.description
